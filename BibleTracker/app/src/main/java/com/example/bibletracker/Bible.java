@@ -1,0 +1,74 @@
+package com.example.bibletracker;
+
+class Bible {
+    static BibleBook[] theBible = new BibleBook[66];
+    Bible() {
+        theBible[0] = new BibleBook("Genesis",50,0);
+        theBible[1] = new BibleBook("Exodus",40,1);
+        theBible[2] = new BibleBook("Leviticus",27,2);
+        theBible[3] = new BibleBook("Numbers",36,3);
+        theBible[4] = new BibleBook("Deuteronomy",34,4);
+        theBible[5] = new BibleBook("Joshua",24,5);
+        theBible[6] = new BibleBook("Judges",21,6);
+        theBible[7] = new BibleBook("Ruth",4,7);
+        theBible[8] = new BibleBook("1 Samuel",31,8);
+        theBible[9] = new BibleBook("2 Samuel",24,9);
+        theBible[10] = new BibleBook("1 Kings", 22,10);
+        theBible[11] = new BibleBook("2 Kings",25,11);
+        theBible[12] = new BibleBook("1 Chronicles",29,12);
+        theBible[13] = new BibleBook("2 Chronicles",36,13);
+        theBible[14] = new BibleBook("Ezra", 10,14);
+        theBible[15] = new BibleBook("Nehemiah", 13,15);
+        theBible[16] = new BibleBook("Esther", 10,16);
+        theBible[17] = new BibleBook("Job", 42,17);
+        theBible[18] = new BibleBook("Psalms", 150,18);
+        theBible[19] = new BibleBook("Proverbs", 31,19);
+        theBible[20] = new BibleBook("Ecclesiastes", 12,20);
+        theBible[21] = new BibleBook("Song of Solomon", 8,21);
+        theBible[22] = new BibleBook("Isaiah", 66,22);
+        theBible[23] = new BibleBook("Jeremiah", 52,23);
+        theBible[24] = new BibleBook("Lamentations", 5,24);
+        theBible[25] = new BibleBook("Ezekiel", 48,25);
+        theBible[26] = new BibleBook("Daniel", 12,26);
+        theBible[27] = new BibleBook("Hosea", 14,27);
+        theBible[28] = new BibleBook("Joel", 3,28);
+        theBible[29] = new BibleBook("Amos", 9,29);
+        theBible[30] = new BibleBook("Obadiah",1,30);
+        theBible[31] = new BibleBook("Jonah", 3,31);
+        theBible[32] = new BibleBook("Micah", 7,32);
+        theBible[33] = new BibleBook("Nahum", 3,33);
+        theBible[34] = new BibleBook("Habakkuk", 3,34);
+        theBible[35] = new BibleBook("Zephaniah", 3,35);
+        theBible[36] = new BibleBook("Haggai", 2,36);
+        theBible[37] = new BibleBook("Zechariah", 14,37);
+        theBible[38] = new BibleBook("Malachi", 4,38);
+        theBible[39] = new BibleBook("Matthew",28,39);
+        theBible[40] = new BibleBook("Mark", 16,40);
+        theBible[41] = new BibleBook("Luke", 24,41);
+        theBible[42] = new BibleBook("John", 21,42);
+        theBible[43] = new BibleBook("Acts", 28,43);
+        theBible[44] = new BibleBook("Romans", 16,44);
+        theBible[45] = new BibleBook("1 Corinthians", 16,45);
+        theBible[46] = new BibleBook("2 Corinthians", 13,46);
+        theBible[47] = new BibleBook("Galatians", 6,47);
+        theBible[48] = new BibleBook("Ephesians", 6,48);
+        theBible[49] = new BibleBook("Philippians", 4,49);
+        theBible[50] = new BibleBook("Colossians", 4,50);
+        theBible[51] = new BibleBook("1 Thessalonians", 5,51);
+        theBible[52] = new BibleBook("2 Thessalonians", 3,52);
+        theBible[53] = new BibleBook("1 Timothy",6,53);
+        theBible[54] = new BibleBook("2 Timothy", 4,54);
+        theBible[55] = new BibleBook("Titus", 3,55);
+        theBible[56] = new BibleBook("Philemon", 1,56);
+        theBible[57] = new BibleBook("Hebrews", 13,57);
+        theBible[58] = new BibleBook("James", 5,58);
+        theBible[59] = new BibleBook("1 Peter", 5,59);
+        theBible[60] = new BibleBook("2 Peter", 3,60);
+        theBible[61] = new BibleBook("1 John", 5,61);
+        theBible[62] = new BibleBook("2 John", 1,62);
+        theBible[63] = new BibleBook("3 John", 1,63);
+        theBible[64] = new BibleBook("Jude", 1,64);
+        theBible[65] = new BibleBook("Revelation", 22,65);
+    }
+
+}

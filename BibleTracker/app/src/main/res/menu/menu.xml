@@ -1,0 +1,26 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_addChapters"
+        android:orderInCategory="1"
+        android:title="Add Chapters Read"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/action_setGoal"
+        android:orderInCategory="10"
+        android:title="Edit Goal"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        android:title="Settings"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/action_deleteData"
+        android:orderInCategory="1000"
+        android:title="Delete all data"
+        app:showAsAction="never"/>
+
+</menu>

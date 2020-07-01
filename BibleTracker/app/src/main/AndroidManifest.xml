@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.bibletracker">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/nwtsty"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/nwtsty_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/title_activity_settings" />
+        <activity
+            android:name=".AddChapters"
+            android:title="Add Chapters"
+            android:parentActivityName=".MainActivity"/>
+        <activity
+            android:name=".ToBeAdded"
+            android:title="Feature Unfinished"
+            android:parentActivityName=".MainActivity"/>
+        <activity
+            android:name=".DeleteConfirm"
+            android:title="Confirm Deletion"
+            android:parentActivityName=".MainActivity"/>
+        <activity
+            android:name=".SetGoal"
+            android:title="Set New Goal"
+            android:parentActivityName=".MainActivity"/>
+        <activity
+            android:name=".StartInput"
+            android:title="Setup Bible Tracker"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

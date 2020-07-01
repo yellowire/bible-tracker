@@ -1,0 +1,29 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory app:title="Reminders">
+
+        <SwitchPreferenceCompat
+            app:key="remind"
+            app:title="Daily reminders"
+            app:defaultValue="false"/>
+
+        <CheckBoxPreference
+            app:key="goalAlert"
+            app:title="Only goal alerts"
+            app:dependency="remind"
+            app:summary="Only show reminders if behind goal"
+            app:defaultValue="false"/>
+
+        <SeekBarPreference
+            android:max="23"
+            app:dependency="remind"
+            app:key="remindTime"
+            app:min="0"
+            app:title="Reminder time"
+            app:defaultValue="12"
+            app:summary="12:00p"/>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

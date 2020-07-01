@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coord"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/mainHeading"
+                    style="@style/h1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="120dp"
+                    android:text="Bible Reading Progress" />
+
+                <LinearLayout
+                    android:id="@+id/mainBox1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="64dp"
+                    android:orientation="vertical">
+
+                    <TableLayout
+                        android:id="@+id/statsTable"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:stretchColumns="*">
+
+                        <TableRow
+                            android:id="@+id/rowLabels"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/label1"
+                                style="@style/statLabel"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:padding="4dp"
+                                android:text="Current\nStreak" />
+
+                            <TextView
+                                android:id="@+id/label2"
+                                style="@style/statLabel"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:padding="4dp"
+                                android:text="Active" />
+
+                            <TextView
+                                android:id="@+id/label3"
+                                style="@style/statLabel"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:padding="4dp"
+                                android:text="Daily\nAverage" />
+
+                            <TextView
+                                android:id="@+id/label4"
+                                style="@style/statLabel"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:padding="4dp"
+                                android:text="Finished" />
+                        </TableRow>
+
+                        <TableRow
+                            android:id="@+id/rowValues"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:gravity="center">
+
+                            <TextView
+                                android:id="@+id/kpi1"
+                                style="@style/statValue"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:padding="4dp"
+                                android:text="0" />
+
+                            <TextView
+                                android:id="@+id/kpi2"
+                                style="@style/statValue"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:padding="4dp"
+                                android:text="0%" />
+
+                            <TextView
+                                android:id="@+id/kpi3"
+                                style="@style/statValue"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:padding="4dp"
+                                android:text="0" />
+
+                            <TextView
+                                android:id="@+id/kpi4"
+                                style="@style/statValue"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:padding="4dp"
+                                android:text="0%" />
+                        </TableRow>
+
+                        <TableRow
+                            android:id="@+id/rowUnits"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:gravity="center">
+
+                            <TextView
+                                android:id="@+id/unit1"
+                                style="@style/statLabel"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="Days" />
+
+                            <TextView
+                                android:id="@+id/unit2"
+                                style="@style/statLabel"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="of Days" />
+
+                            <TextView
+                                android:id="@+id/unit3"
+                                style="@style/statLabel"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="chapters" />
+
+                            <TextView
+                                android:id="@+id/unit4"
+                                style="@style/statLabel"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="of Bible" />
+                        </TableRow>
+                    </TableLayout>
+
+                    <ProgressBar
+                        android:id="@+id/progressBar"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="24dp"
+                        android:layout_marginTop="72dp"
+                        android:layout_marginRight="24dp"
+                        android:layout_marginBottom="0dp"
+                        android:indeterminate="false"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:progressDrawable="@drawable/customprogressbar" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="16dp"
+                        android:gravity="bottom"
+                        android:orientation="horizontal"
+                        android:padding="24dp">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/goalHeader"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:padding="8dp"
+                                android:text="Current Goal:" />
+
+                            <TextView
+                                android:id="@+id/goal"
+                                style="@style/h2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:padding="8dp"
+                                android:text="No goal set"
+                                android:textAlignment="center"
+                                android:textSize="18sp" />
+                        </LinearLayout>
+
+                        <Button
+                            android:id="@+id/setGoal"
+                            style="@style/button"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@color/colorPrimary"
+                            android:onClick="onSetGoal"
+                            android:text="Edit Goal"
+                            android:visibility="visible" />
+
+                    </LinearLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="60dp">
+
+                        <TextView
+                            android:id="@+id/monthText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="60dp"
+                            android:gravity="center|center_horizontal|center_vertical"
+                            android:paddingLeft="32dp"
+                            android:text="June"
+                            app:layout_constraintStart_toEndOf="@+id/weekPrev"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <Button
+                            android:id="@+id/weekPrev"
+                            style="@style/scrollButt"
+                            android:layout_width="24dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:onClick="onPrevClick"
+                            android:text="&lt;"
+                            app:layout_constraintBottom_toBottomOf="@+id/chart"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/chart" />
+
+                        <com.github.mikephil.charting.charts.BubbleChart
+                            android:id="@+id/chart"
+                            android:layout_width="0dp"
+                            android:layout_height="100dp"
+                            app:layout_constraintEnd_toStartOf="@+id/weekNext"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toEndOf="@+id/weekPrev"
+                            app:layout_constraintTop_toBottomOf="@+id/monthText">
+
+                        </com.github.mikephil.charting.charts.BubbleChart>
+
+                        <Button
+                            android:id="@+id/weekNext"
+                            style="@style/scrollButt"
+                            android:layout_width="24dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp"
+                            android:onClick="onNextClick"
+                            android:text=">"
+                            app:layout_constraintBottom_toBottomOf="@+id/chart"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/chart" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tooly"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabulous"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="32dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="@drawable/plus"
+        android:onClick="onFabClick"
+        app:backgroundTint="@color/colorPrimary"
+        app:fabSize="auto"
+        app:srcCompat="?attr/actionBarItemBackground" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
