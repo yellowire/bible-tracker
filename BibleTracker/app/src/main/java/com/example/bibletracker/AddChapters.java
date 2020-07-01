@@ -162,7 +162,7 @@ public class AddChapters extends AppCompatActivity {
                 super.onAnimationEnd(animation);
                 if (thisCheck.isChecked()) {
                     String prev = pref.getString(thisChapter.getPrevChapter().getPosition() + " " + thisChapter.getPrevChapter().getChapter(), null);
-                    if (prev != null) {
+                    if (prev != null || thisChapter.equals(data.getStartChapter())) {
                         thisCheck.setVisibility(View.GONE);
                         showBullpen();
                         addToPrefChaps(thisChapter);

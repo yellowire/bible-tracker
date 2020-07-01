@@ -274,6 +274,7 @@ class ReadData {
     int getGoalValue() { setGoalValue(); return goalValue; }
     int getGoalToday(LocalDate date) { setGoalToday(date); return goalToday; }
     LocalDate getStartDate() { return startDate; }
+    BibleBookChapter getStartChapter() { return startChapter; }
     BibleBookChapter getNextUp() { setNextUp(); String nextUpString = (nextUp != null) ? theBible[nextUp.getPosition()].getName() + nextUp.getChapter() : "null"; return nextUp; }
     BibleBookChapter getBullpen() { setBullpen(); return bullpen; }
     @Nullable BibleBookChapter[] getDateChapters(LocalDate date) { setDateChapters(date); return dateChapters; }
