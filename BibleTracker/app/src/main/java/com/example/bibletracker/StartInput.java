@@ -1,10 +1,8 @@
 package com.example.bibletracker;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -16,7 +14,6 @@ import java.time.format.DateTimeFormatter;
 
 import static com.example.bibletracker.Bible.theBible;
 
-@RequiresApi(api = Build.VERSION_CODES.O)
 public class StartInput extends AppCompatActivity {
 
     @Override

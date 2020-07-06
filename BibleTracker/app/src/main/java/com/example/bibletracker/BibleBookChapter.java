@@ -1,9 +1,5 @@
 package com.example.bibletracker;
 
-import android.util.Log;
-
-import java.time.LocalDate;
-
 import static com.example.bibletracker.Bible.theBible;
 
 class BibleBookChapter {

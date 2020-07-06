@@ -1,6 +1,5 @@
 package com.example.bibletracker;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -8,7 +7,6 @@ import androidx.appcompat.widget.Toolbar;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.content.SharedPreferences;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.text.Spannable;
@@ -28,7 +26,6 @@ import java.util.List;
 
 import static com.example.bibletracker.Bible.theBible;
 
-@RequiresApi(api = Build.VERSION_CODES.O)
 public class AddChapters extends AppCompatActivity {
 
     public static Bible bible = new Bible();

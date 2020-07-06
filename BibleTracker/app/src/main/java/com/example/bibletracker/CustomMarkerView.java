@@ -2,10 +2,7 @@ package com.example.bibletracker;
 
 import android.content.Context;
 import android.graphics.Canvas;
-import android.os.Build;
 import android.widget.TextView;
-
-import androidx.annotation.RequiresApi;
 
 import com.github.mikephil.charting.charts.BubbleChart;
 import com.github.mikephil.charting.components.MarkerView;
@@ -14,7 +11,6 @@ import com.github.mikephil.charting.highlight.Highlight;
 
 import java.util.Map;
 
-@RequiresApi(api = Build.VERSION_CODES.O)
 class CustomMarkerView extends MarkerView {
 
     private TextView markerContent;

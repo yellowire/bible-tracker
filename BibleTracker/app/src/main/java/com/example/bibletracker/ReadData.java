@@ -1,9 +1,6 @@
 package com.example.bibletracker;
 
-import android.os.Build;
-
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -11,7 +8,6 @@ import java.time.format.DateTimeFormatter;
 import static com.example.bibletracker.Bible.theBible;
 import static java.time.temporal.ChronoUnit.DAYS;
 
-@RequiresApi(api = Build.VERSION_CODES.O)
 class ReadData {
 
     private int totalChapterCount = 0;
@@ -22,8 +18,9 @@ class ReadData {
     private int streakCount = -1;
     private int daysActive = -1;
     private int readChapterCount = -1;
-    private int goalType = -1;
-    private int goalValue = -1;
+    private String goalType = null;
+    private int goalTime = -1;
+    private int goalChapters = -1;
     private int goalToday = -1;
     private BibleBookChapter nextUp = null;
     private BibleBookChapter bullpen = null;
@@ -195,36 +192,29 @@ class ReadData {
             nextUp = startChapter;
         }
     }
-    private void setGoalType() {
-        String type = MainActivity.pref.getString("goalType",null);
-        if (type != null) {
-            if (type.equals("chapters")) {
-                goalType = 1;
-            } else if (type.equals("months")) {
-                goalType = 2;
-            } else {
-                goalType = 0;
-            }
-        }
+    private void setGoalTime() {
+        goalTime = MainActivity.pref.getInt("goalTime",0);
     }
-    private void setGoalValue() {
-        String goalValueString = MainActivity.pref.getString("goalValue",null);
-        goalValue = (goalValueString != null) ? Integer.parseInt(goalValueString) : 0;
+    private void setGoalChapters() {
+        goalChapters = MainActivity.pref.getInt("goalChapters",-1);
     }
     private void setGoalToday(LocalDate date) {
-        setGoalType();
-        setGoalValue();
+        setGoalChapters();
+        setGoalTime();
         setDaysSinceStart(date);
 
-        if (goalType == 1) {
-            goalToday = goalValue * daysSinceStart;
-        } else if (goalType == 2) {
-            int totalDays = (int) DAYS.between(startDate,startDate.plusMonths(goalValue));
+        if (goalChapters == 0) {
+            int totalDays = (int) DAYS.between(startDate,startDate.plusMonths(goalTime));
             double perDay = (float) totalChapterCount / (float) totalDays;
             double target = Math.round(perDay);
             goalToday = (int) target * daysSinceStart;
+        } else if (goalChapters > 0) {
+            double periods = (float) daysSinceStart / (float) goalTime;
+            double target = goalChapters * periods;
+            goalToday = (int) Math.round(target);
+        } else {
+            goalToday = 0;
         }
-
     }
     public void setBullpen() {
         setNextUp();
@@ -270,12 +260,13 @@ class ReadData {
     int getStreakCount(LocalDate date) { streakCount = 0; setStreakCount(date); return streakCount; }
     int getDaysActive(LocalDate date) { setDaysActive(date); return daysActive; }
     int getReadChapterCount() { setReadChapterCount(); return readChapterCount; }
-    int getGoalType() { setGoalType(); return goalType; }
-    int getGoalValue() { setGoalValue(); return goalValue; }
+    int getGoalTime() { setGoalTime(); return goalTime; }
+    int getGoalChapters() { setGoalChapters(); return goalChapters; }
     int getGoalToday(LocalDate date) { setGoalToday(date); return goalToday; }
+    String getGoalType() { return (getGoalChapters() == 0) ? "months" : "days"; }
     LocalDate getStartDate() { return startDate; }
     BibleBookChapter getStartChapter() { return startChapter; }
-    BibleBookChapter getNextUp() { setNextUp(); String nextUpString = (nextUp != null) ? theBible[nextUp.getPosition()].getName() + nextUp.getChapter() : "null"; return nextUp; }
+    BibleBookChapter getNextUp() { setNextUp(); return nextUp; }
     BibleBookChapter getBullpen() { setBullpen(); return bullpen; }
     @Nullable BibleBookChapter[] getDateChapters(LocalDate date) { setDateChapters(date); return dateChapters; }
 }

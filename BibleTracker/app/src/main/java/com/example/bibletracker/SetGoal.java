@@ -16,13 +16,15 @@ import android.widget.TextView;
 public class SetGoal extends AppCompatActivity {
 
     NumberPicker chapterPicker;
+    NumberPicker daysPicker;
     NumberPicker monthsPicker;
     RadioGroup typeGroup;
     LinearLayout chapterSide;
     LinearLayout monthsSide;
     RadioButton chapterButton;
     RadioButton monthsButton;
-    String goalType;
+    int goalTime;
+    int goalChapters;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,9 +40,12 @@ public class SetGoal extends AppCompatActivity {
     }
     public void setupGoalViews() {
         chapterPicker = findViewById(R.id.chapterPicker);
+        daysPicker = findViewById(R.id.daysPicker);
         monthsPicker = findViewById(R.id.monthsPicker);
         chapterPicker.setMinValue(1);
-        chapterPicker.setMaxValue(10);
+        chapterPicker.setMaxValue(20);
+        daysPicker.setMinValue(1);
+        daysPicker.setMaxValue(7);
         monthsPicker.setMinValue(6);
         monthsPicker.setMaxValue(60);
 
@@ -49,11 +54,6 @@ public class SetGoal extends AppCompatActivity {
         monthsSide = findViewById(R.id.monthsLayout);
         chapterButton = findViewById(R.id.chapterRadio);
         monthsButton = findViewById(R.id.monthsRadio);
-        if (monthsButton.isChecked()) {
-            goalType = "months";
-        } else {
-            goalType = "chapters";
-        }
 
         typeGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -63,17 +63,13 @@ public class SetGoal extends AppCompatActivity {
                         monthsButton.setBackground(getDrawable(R.drawable.underline));
                         chapterSide.setVisibility(View.GONE);
                         monthsSide.setVisibility(View.VISIBLE);
-                        goalType = "months";
                         break;
                     case R.id.chapterRadio:
                         monthsButton.setBackground(null);
                         chapterButton.setBackground(getDrawable(R.drawable.underline));
-                        goalType = "chapter";
                         monthsSide.setVisibility(View.GONE);
                         chapterSide.setVisibility(View.VISIBLE);
                         break;
-                    default:
-                        goalType = null;
                 }
             }
         });
@@ -89,24 +85,40 @@ public class SetGoal extends AppCompatActivity {
                 }
             }
         });
+
+        final TextView dayLabel = findViewById(R.id.textView8);
+        daysPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
+            @Override
+            public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
+                if (newVal > 1) {
+                    dayLabel.setText("days");
+                } else {
+                    dayLabel.setText("day");
+                }
+            }
+        });
     }
 
     public void onSaveGoal(View v) {
-        String goal;
-        NumberPicker picker;
-        if (goalType.equals("months")) {
-            picker = findViewById(R.id.monthsPicker);
-        } else if (goalType.equals("chapters")) {
-            picker = findViewById(R.id.chapterPicker);
-        } else {
-            picker = null;
+        int checkedId = typeGroup.getCheckedRadioButtonId();
+        switch(checkedId) {
+            case R.id.monthsRadio:
+                goalChapters = 0;
+                goalTime = monthsPicker.getValue();
+                break;
+            case R.id.chapterRadio:
+                goalChapters = chapterPicker.getValue();
+                goalTime = daysPicker.getValue();
+                break;
+            default:
+                goalChapters = -1;
+                goalTime = 0;
         }
-        goal = Integer.toString(picker.getValue());
 
         SharedPreferences pref = getApplicationContext().getSharedPreferences("BiblePref",0);
         SharedPreferences.Editor editor = pref.edit();
-        editor.putString("goalValue",goal);
-        editor.putString("goalType",goalType);
+        editor.putInt("goalChapters",goalChapters);
+        editor.putInt("goalTime",goalTime);
         editor.apply();
         finish();
     }

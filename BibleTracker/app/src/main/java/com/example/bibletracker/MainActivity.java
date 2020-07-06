@@ -1,14 +1,11 @@
-// TODO: DEV VALUES PRESENT
 package com.example.bibletracker;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -31,7 +28,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@RequiresApi(api = Build.VERSION_CODES.O)
 public class MainActivity extends AppCompatActivity {
 
     public static Bible bible = new Bible();
@@ -40,8 +36,10 @@ public class MainActivity extends AppCompatActivity {
     public static ReadData data = null;
     DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     int totalChapters = 0;
-    int goalType = 0;
-    int goalValue = 0;
+//    int goalType = 0;
+//    int goalValue = 0;
+    int goalChapters = -1;
+    int goalTime = 0;
     int dateDiff = 0;
     int streakCount = 0;
     int readChapterCount = 0;
@@ -244,8 +242,10 @@ public class MainActivity extends AppCompatActivity {
         data = new ReadData();
         totalChapters = data.getTotalChapterCount();
         readChapterCount = data.getReadChapterCount();
-        goalType = data.getGoalType();
-        goalValue = data.getGoalValue();
+//        goalType = data.getGoalType();
+//        goalValue = data.getGoalValue();
+        goalChapters = data.getGoalChapters();
+        goalTime = data.getGoalTime();
         dateDiff = data.getDaysSinceStart(LocalDate.now());
         streakCount = data.getStreakCount(LocalDate.now());
     }
@@ -281,13 +281,18 @@ public class MainActivity extends AppCompatActivity {
     public void setupGoalView() {
         TextView goal = findViewById(R.id.goal);
         String goalString = "none";
-        if (goalType == 2) {
-            goalString = "Finish the Bible in " + goalValue + " months.";
-        } else if (goalType == 1) {
-            if (goalValue == 1) {
-                goalString = "Read 1 chapter each day.";
+        if (goalChapters == 0) {
+            goalString = "Finish the Bible in " + goalTime + " months.";
+        } else if (goalChapters > 0) {
+            if (goalChapters == 1) {
+                goalString = "Read 1 chapter every ";
             } else {
-                goalString = "Read " + goalValue + " chapters each day.";
+                goalString = "Read " + goalChapters + " chapters every ";
+            }
+            if (goalTime == 1) {
+                goalString += "day.";
+            } else {
+                goalString += goalTime + " days.";
             }
         }
         goal.setText(goalString);

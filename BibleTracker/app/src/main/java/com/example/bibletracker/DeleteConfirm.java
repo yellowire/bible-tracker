@@ -1,12 +1,10 @@
 package com.example.bibletracker;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.SharedPreferences;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 
@@ -29,7 +27,6 @@ public class DeleteConfirm extends AppCompatActivity {
         finish();
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     public void onDeleteClick(View view) {
         SharedPreferences.Editor editor = pref.edit();
         editor.clear();
